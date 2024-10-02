@@ -27,3 +27,11 @@ int	ft_str_is_alpha(char *str)
 	}
 	return (1);
 }
+
+int main() {
+    // test your ft_str_is_alpha function here
+    const char *str = "Hello, World!";
+    int result = ft_str_is_alpha(str);
+    printf("Result: %d\n", result);
+    return 0;
+}
