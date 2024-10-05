@@ -6,9 +6,11 @@
 /*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 14:00:20 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/05 18:21:24 by dclarkso         ###   ########.fr       */
+/*   Updated: 2024/10/05 20:40:06 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// Todavia a corregir.
 
 #include "libft.h"
 

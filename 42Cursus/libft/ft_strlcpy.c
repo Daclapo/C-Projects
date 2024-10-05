@@ -5,32 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 13:59:35 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/05 18:32:19 by dclarkso         ###   ########.fr       */
+/*   Created: 2024/10/05 19:49:27 by dclarkso          #+#    #+#             */
+/*   Updated: 2024/10/05 20:36:02 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// [no crash]: your strlcpy doe not segfault when null parameter is sent
+// Errores ft_strlcpy y ft_strlcat
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+unsigned int	ft_strlcpy(char *dest, char *src, size_t size)
 {
-	size_t	srcsize;
-	size_t	i;
+	unsigned int	i;
+	unsigned int	src_len;
 
-	if (!dst || !src)
-		return (0);
-	srcsize = ft_strlen(src);
+	src_len = 0;
+	while (src[src_len] != '\0')
+		src_len++;
+	if (size == 0)
+		return (src_len);
 	i = 0;
-	if (dstsize != 0)
+	while (i < size - 1 && src[i] != '\0')
 	{
-		while (src[i] != '\0' && i < (dstsize - 1))
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		dest[i] = src[i];
+		i++;
 	}
-	return (srcsize);
+	if (size > 0)
+		dest[i] = '\0';
+	return (src_len);
 }

@@ -6,11 +6,15 @@
 /*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:59:26 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/05 18:18:51 by dclarkso         ###   ########.fr       */
+/*   Updated: 2024/10/05 20:36:10 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+// Errores ft_strlcpy y ft_strlcat
+
+#include "libft.h"
+
+size_t	ft_strlcat(char *dest, char *src, size_t size)
 {
 	unsigned int	src_size;
 	unsigned int	dest_size;

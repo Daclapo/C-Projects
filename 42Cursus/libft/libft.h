@@ -6,7 +6,7 @@
 /*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 14:02:06 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/05 18:22:59 by dclarkso         ###   ########.fr       */
+/*   Updated: 2024/10/05 20:33:33 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t n);
-size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
-size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
+size_t				ft_strlcpy(char *dst, const char *src, size_t size);
+size_t				ft_strlcat(char *dst, const char *src, size_t size);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 char				*ft_strchr(const char *s, int c);
@@ -47,7 +47,7 @@ char				*ft_strnstr(const char *haystack, const char *needle,
 						size_t len);
 int					ft_atoi(const char *str);
 void				*ft_calloc(size_t count, size_t size);
-char				*ft_strdup(const char *s1);
+char				*ft_strdup(const char *s);
 
 char				*ft_substr(const char *s, unsigned int start, size_t len);
 char				*ft_strjoin(const char *s1, const char *s2);

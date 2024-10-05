@@ -6,8 +6,22 @@
 /*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 17:45:03 by dclarkso          #+#    #+#             */
-/*   Updated: 2024/10/05 18:29:03 by dclarkso         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:54:52 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Error Compilacion, Vacio.
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+	char	*str;
+
+	str = (char *)s;
+	i = 0;
+	while (i < n)
+	{
+		str[i] = 0;
+		i++;
+	}
+}
