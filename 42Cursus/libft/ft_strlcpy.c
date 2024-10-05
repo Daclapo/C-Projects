@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:59:35 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/05 13:59:35 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/05 18:32:19 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// [no crash]: your strlcpy doe not segfault when null parameter is sent
 
 #include "libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t srcsize;
-	size_t i;
+	size_t	srcsize;
+	size_t	i;
 
 	if (!dst || !src)
 		return (0);

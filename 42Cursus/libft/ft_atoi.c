@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dclarkso <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:18:49 by dclarkso          #+#    #+#             */
-/*   Updated: 2024/06/04 19:05:14 by dclarkso         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:29:02 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// Errores en tests.
 
 int	ft_atoi(char *str)
 {
