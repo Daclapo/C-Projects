@@ -10,33 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// Errores ft_strlcpy y ft_strlcat
-
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t n)
 {
-	unsigned int	src_size;
-	unsigned int	dest_size;
-	unsigned int	i;
+	size_t	c;
+	size_t	c2;
+	size_t	c3;
 
-	i = 0;
-	src_size = 0;
-	dest_size = 0;
-	while (src[src_size])
-		src_size++;
-	if (size == 0)
-		return (src_size);
-	while (dest[dest_size])
-		dest_size++;
-	if (size <= dest_size)
-		return (size + src_size);
-	i = 0;
-	while (size && (--size - dest_size) && src[i])
+	c = 0;
+	c2 = 0;
+	c3 = 0;
+	c = ft_strlen(dst);
+	c3 = ft_strlen(src);
+	if (n < c + 1)
+		return (c3 + n);
+	else
 	{
-		dest[dest_size + i] = src[i];
-		i++;
+		c3 = c3 + c;
+		while (c + 1 < n && src[c2] != 0)
+		{
+			dst[c] = src[c2];
+			c++;
+			c2++;
+		}	
+		dst[c] = 0;
+		return (c3);
 	}
-	dest[dest_size + i] = '\0';
-	return (src_size + dest_size);
 }

@@ -10,27 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// Errores ft_strlcpy y ft_strlcat
-
 #include "libft.h"
 
-unsigned int	ft_strlcpy(char *dest, char *src, size_t size)
+size_t	calcreturn(const char	*src)
 {
-	unsigned int	i;
-	unsigned int	src_len;
+	size_t	c;
 
-	src_len = 0;
-	while (src[src_len] != '\0')
-		src_len++;
-	if (size == 0)
-		return (src_len);
-	i = 0;
-	while (i < size - 1 && src[i] != '\0')
+	c = 0;
+	while (src[c] != 0)
+		c++;
+	return (c);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t n)
+{
+	size_t	c;
+
+	c = 0;
+	if (!src)
+		return (0);
+	if (n == 0)
 	{
-		dest[i] = src[i];
-		i++;
+		return (calcreturn(src));
 	}
-	if (size > 0)
-		dest[i] = '\0';
-	return (src_len);
+	while (c < n - 1)
+	{
+		if (src[c] == 0)
+			break ;
+		dst[c] = src[c];
+		c++;
+	}
+	dst[c] = 0;
+	return (calcreturn(src));
 }

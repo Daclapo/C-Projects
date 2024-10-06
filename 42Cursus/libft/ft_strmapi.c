@@ -10,22 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// Error: ASSIGN_IN_CONTROL    (line:  20, col:  27):      Assignment in control structure
-
 #include "libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char			*str;
-	unsigned int	i;
+	char	*ret;
+	int		len;
+	int		i;
 
-	if (!s || !f || !(str = ft_strdup(s)))
-		return (0);
+	if (!s || !f)
+		return (NULL);
 	i = 0;
-	while (str[i])
+	len = ft_strlen(s);
+	ret = malloc(sizeof(char) * (len + 1));
+	if (!ret)
+		return (NULL);
+	while (s[i])
 	{
-		str[i] = f(i, str[i]);
+		ret[i] = f(i, s[i]);
 		i++;
 	}
-	return (str);
+	ret[i] = '\0';
+	return (ret);
 }

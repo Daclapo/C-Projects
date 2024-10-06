@@ -10,18 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// Error: ASSIGN_IN_CONTROL    (line:  21, col:  15):      Assignment in control structure
-
 #include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	size_t		tot_size;
-	void		*dst;
+	char	*memory;
+	size_t	counter;
 
-	tot_size = size * count;
-	if (!(dst = malloc(tot_size)))
-		return (0);
-	ft_memset(dst, 0, tot_size);
-	return (dst);
+	memory = malloc(count * size);
+	if (!memory)
+		return (NULL);
+	counter = 0;
+	while (counter < count * size)
+	{
+		memory[counter] = 0;
+		counter++;
+	}
+	return (memory);
 }

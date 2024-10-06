@@ -10,37 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Error: TERNARY_FBIDDEN      (line:  22, col:  18):      Ternaries are forbidden
-Error: TERNARY_FBIDDEN      (line:  23, col:  19):      Ternaries are forbidden
-Error: ASSIGN_IN_CONTROL    (line:  29, col:  15):      Assignment in control structure */
-
+#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	long	nbr;
-	size_t	size;
+	int			len;
+	char		*ret;
+	const char	*digits = "0123456789";
 
-	nbr = n;
-	size = n > 0 ? 0 : 1;
-	nbr = nbr > 0 ? nbr : -nbr;
+	len = ft_numlen(n, 10);
+	ret = malloc(sizeof(char) * (len + 1));
+	if (!ret)
+		return (0);
+	ret[len] = 0;
+	if (n == 0)
+		ret[0] = '0';
+	if (n < 0)
+		ret[0] = '-';
 	while (n)
 	{
+		if (n > 0)
+			ret[--len] = digits[n % 10];
+		else
+			ret[--len] = digits[n % 10 * -1];
 		n /= 10;
-		size++;
 	}
-	if (!(str = (char *)malloc(size + 1)))
-		return (0);
-	*(str + size--) = '\0';
-	while (nbr > 0)
-	{
-		*(str + size--) = nbr % 10 + '0';
-		nbr /= 10;
-	}
-	if (size == 0 && str[1] == '\0')
-		*(str + size) = '0';
-	else if (size == 0 && str[1] != '\0')
-		*(str + size) = '-';
-	return (str);
+	return (ret);
 }

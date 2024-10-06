@@ -10,30 +10,43 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// Errores en tests.
+#include "libft.h"
 
-int	ft_atoi(char *str)
+int	ignore_spaces(const char *str)
 {
 	int	i;
-	int	sign;
-	int	num;
 
 	i = 0;
-	num = 0;
-	sign = -1;
-	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\n'
-		|| str[i] == '\r' || str[i] == '\t' || str[i] == '\v')
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || \
+	str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
 		i++;
-	while (str [i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign = sign * -1;
+	return (i);
+}
+
+int	ft_atoi(const char *str)
+{
+	char	*text;
+	int		i;
+	int		neg;
+	long	result;
+
+	text = (char *)str;
+	neg = 1;
+	result = 0;
+	i = ignorespaces(str);
+	if (str[i] == '-')
+		neg = -1;
+	if (str[i] == '-' || str[i] == '+')
 		i++;
-	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		num = num * 10 - (str[i] - '0');
+		result = result * 10 + (str[i] - 48);
 		i++;
+		if (result * neg > 2147483647)
+			return (-1);
+		if (result * neg < -2147483648)
+			return (0);
 	}
-	return (num * sign);
+	result = result * neg;
+	return ((int)result);
 }

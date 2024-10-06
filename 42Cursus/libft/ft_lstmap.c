@@ -10,26 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// Error: ASSIGN_IN_CONTROL    (line:  25, col:  20):      Assignment in control structure
-
 #include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_lst;
-	t_list	*elem;
+	t_list	*e;
 
-	if (!lst)
-		return (0);
-	new_lst = 0;
-	while (lst)
+	new_lst = NULL;
+	while (lst && f)
 	{
-		if (!(elem = ft_lstnew(f(lst->content))))
+		e = ft_lstnew(f(lst->content));
+		if (!e)
 		{
 			ft_lstclear(&new_lst, del);
-			return (0);
+			return (NULL);
 		}
-		ft_lstadd_back(&new_lst, elem);
+		ft_lstadd_back(&new_lst, e);
 		lst = lst->next;
 	}
 	return (new_lst);
