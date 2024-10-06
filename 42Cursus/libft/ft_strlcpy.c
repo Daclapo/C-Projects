@@ -6,40 +6,27 @@
 /*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 19:49:27 by dclarkso          #+#    #+#             */
-/*   Updated: 2024/10/05 20:36:02 by dclarkso         ###   ########.fr       */
+/*   Updated: 2024/10/06 20:28:29 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	calcreturn(const char	*src)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t	c;
+	size_t	src_len;
+	size_t	i;
 
-	c = 0;
-	while (src[c] != 0)
-		c++;
-	return (c);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t n)
-{
-	size_t	c;
-
-	c = 0;
-	if (!src)
-		return (0);
-	if (n == 0)
+	i = 0;
+	src_len = ft_strlen((char *)src);
+	if (dstsize)
 	{
-		return (calcreturn(src));
+		while (src[i] && i < dstsize - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	while (c < n - 1)
-	{
-		if (src[c] == 0)
-			break ;
-		dst[c] = src[c];
-		c++;
-	}
-	dst[c] = 0;
-	return (calcreturn(src));
+	return (src_len);
 }

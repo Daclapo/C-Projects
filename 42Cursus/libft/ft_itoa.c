@@ -6,35 +6,55 @@
 /*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 17:46:16 by dclarkso          #+#    #+#             */
-/*   Updated: 2024/10/05 18:34:56 by dclarkso         ###   ########.fr       */
+/*   Updated: 2024/10/06 20:19:32 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
+#include <stdlib.h>
+
+static unsigned int	ft_number_size(int number)
+{
+	unsigned int	length;
+
+	length = 0;
+	if (number == 0)
+		return (1);
+	if (number < 0)
+		length += 1;
+	while (number != 0)
+	{
+		number /= 10;
+		length++;
+	}
+	return (length);
+}
 
 char	*ft_itoa(int n)
 {
-	int			len;
-	char		*ret;
-	const char	*digits = "0123456789";
+	char			*string;
+	unsigned int	number;
+	unsigned int	length;
 
-	len = ft_numlen(n, 10);
-	ret = malloc(sizeof(char) * (len + 1));
-	if (!ret)
-		return (0);
-	ret[len] = 0;
-	if (n == 0)
-		ret[0] = '0';
+	length = ft_number_size(n);
+	string = (char *)malloc(sizeof(char) * (length + 1));
+	if (string == NULL)
+		return (NULL);
 	if (n < 0)
-		ret[0] = '-';
-	while (n)
 	{
-		if (n > 0)
-			ret[--len] = digits[n % 10];
-		else
-			ret[--len] = digits[n % 10 * -1];
-		n /= 10;
+		string[0] = '-';
+		number = -n;
 	}
-	return (ret);
+	else
+		number = n;
+	if (n == 0)
+		string[0] = '0';
+	string[length] = '\0';
+	while (number != 0)
+	{
+		string[length - 1] = (number % 10) + '0';
+		number = number / 10;
+		length--;
+	}
+	return (string);
 }

@@ -6,7 +6,7 @@
 /*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:59:26 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/05 20:36:10 by dclarkso         ###   ########.fr       */
+/*   Updated: 2024/10/06 20:20:34 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t n)
 			dst[c] = src[c2];
 			c++;
 			c2++;
-		}	
+		}
 		dst[c] = 0;
 		return (c3);
 	}

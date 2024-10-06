@@ -6,7 +6,7 @@
 /*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:18:49 by dclarkso          #+#    #+#             */
-/*   Updated: 2024/10/05 18:29:02 by dclarkso         ###   ########.fr       */
+/*   Updated: 2024/10/06 18:03:15 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@ int	ignore_spaces(const char *str)
 
 int	ft_atoi(const char *str)
 {
-	char	*text;
 	int		i;
 	int		neg;
 	long	result;
 
-	text = (char *)str;
 	neg = 1;
 	result = 0;
-	i = ignorespaces(str);
+	i = ignore_spaces(str);
 	if (str[i] == '-')
 		neg = -1;
 	if (str[i] == '-' || str[i] == '+')
