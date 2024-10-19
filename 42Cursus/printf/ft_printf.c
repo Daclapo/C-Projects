@@ -6,19 +6,19 @@
 /*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 17:25:37 by dclarkso          #+#    #+#             */
-/*   Updated: 2024/10/19 17:28:23 by dclarkso         ###   ########.fr       */
+/*   Updated: 2024/10/19 20:51:28 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	putchar(char c)
+int	ft_putchar(char c)
 {
 	write(1, &c, 1);
 	return (1);
 }
 
-int	putstr(char *str)
+int	ft_putstr(char *str)
 {
 	int	i;
 
@@ -36,31 +36,64 @@ int	putstr(char *str)
 	return (i);
 }
 
+int	ft_putnbr(int nb)
+{
+	int	num_len;
+
+	num_len = 0;
+	if (nb == -2147483648)
+	{
+		ft_putchar('-');
+		ft_putchar('2');
+		ft_putnbr(147483648);
+		num_len = 11;
+	}
+	else if (nb < 0)
+	{
+		ft_putchar('-');
+		ft_putnbr(-nb);
+		num_len = 1;
+	}
+	else if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+		num_len++;
+	}
+	else
+		ft_putchar(nb + '0');
+		num_len++;
+	return (num_len);
+}
+
 int	conversion(va_list args, const char type_indicator)
 {
-	int	char_to_print;
-	int	char_to_print;
+	int	n_printed_chars;
 
-	char_to_print = 0;
+	n_printed_chars = 0;
 	if (type_indicator == 'c')
-		char_to_print += putchar(va_arg(args, int));
+		n_printed_chars += ft_putchar(va_arg(args, int));
 	else if (type_indicator == 's')
-		char_to_print += putstr(va_arg(args, char *));
-	// Crear la funcion adecuada
+		n_printed_chars += ft_putstr(va_arg(args, char *));
+
+	// %p El puntero void * dado como argumento se imprime en formato hexadecimal:
 	else if (type_indicator == 'p')
-		char_to_print += putstr(va_arg(args, char *));
-	// Crear la funcion adecuada
+		n_printed_chars += ft_putstr(va_arg(args, char *));
+
+	// %d Imprime un número decimal (base 10). %i Imprime un entero en base 10.
 	else if (type_indicator == 'd' || type_indicator == 'i')
-		char_to_print += putstr(va_arg(args, char *));
-	// Crear la funcion adecuada
+		n_printed_chars += ft_putnbr(va_arg(args, int));
+
+	// %u Imprime un número decimal (base 10) sin signo.
 	else if (type_indicator == 'u')
-		char_to_print += putstr(va_arg(args, char *));
-	// Crear la funcion adecuada
+		n_printed_chars += ft_putstr(va_arg(args, unsigned int));
+
+	// %x Imprime un número hexadecimal (base 16) en minúsculas. %X Imprime un número hexadecimal (base 16) en mayúsculas.
 	else if (type_indicator == 'x' || type_indicator == 'X')
-		char_to_print += putstr(va_arg(args, char *));
+		n_printed_chars += ft_putstr(va_arg(args, unsigned int));
 	else if (type_indicator == '%')
-		char_to_print += putchar('%');
-	return (char_to_print);
+		n_printed_chars += ft_putchar('%');
+	return (n_printed_chars);
 }
 
 int	printf(const char *format, ...)
