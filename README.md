@@ -1,6 +1,6 @@
-# C Programming Exercises - 42Cursus & 42Piscine
+# C Programming Projects - 42Cursus & 42Piscine
 
-Welcome! This repository is a collection of my C programming exercises and projects developed at [42Madrid](https://www.42madrid.com). Here, you’ll find solutions to tasks from the 42Piscine (introductory C programming bootcamp) and 42Cursus (main curriculum projects). These exercises reflect the progressive learning and challenges of the 42 curriculum.
+Welcome! This repository is a collection of my C programming projects and exercises developed at [42Madrid](https://www.42madrid.com). Here, you’ll find solutions to tasks from the 42Piscine (introductory C programming bootcamp) and 42Cursus (main curriculum projects). These projects and exercises reflect the progressive learning and challenges of the 42 curriculum.
 
 > **Note:** This repository is continuously updated with new projects as they are completed and successfully evaluated, reflecting ongoing progress through the 42Madrid program.
 
