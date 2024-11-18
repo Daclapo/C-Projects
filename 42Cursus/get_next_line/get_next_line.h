@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/11 17:05:49 by dclarkso          #+#    #+#             */
-/*   Updated: 2024/11/18 13:06:03 by dclarkso         ###   ########.fr       */
+/*   Created: 2024/11/18 12:54:40 by dclarkso          #+#    #+#             */
+/*   Updated: 2024/11/18 13:06:06 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+
+# include <fcntl.h> // Para open(); int open (const char* path, int flags [,int mode ]);
+# include <stdlib.h>
 # include <unistd.h>
 
-int		ft_printf(char const *format, ...);
-void	ft_putnbr(int nbr, int *count);
-void	print_base(unsigned long long n, char *base, int base_len, int *count);
-void	ft_putstr(char *str, int *count);
+char	*get_next_line(int fd);
 
 #endif
