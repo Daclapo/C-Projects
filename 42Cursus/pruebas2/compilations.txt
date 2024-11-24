@@ -1,0 +1,38 @@
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=1 get_next_line.c get_next_line_utils.c main.c -o gnl
+./gnl test_normal.txt
+
+
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c main.c -o gnl
+./gnl test_large.txt
+
+
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=10000 get_next_line.c get_next_line_utils.c main.c -o gnl
+./gnl test_special_chars.txt
+
+
+
+
+
+
+Casos a Evaluar
+Archivo vacío (test_empty.txt):
+
+Espera NULL inmediatamente.
+Archivo con una sola línea (test_one_line.txt):
+
+Verifica si la línea se lee correctamente, incluso si no hay un salto de línea al final.
+Archivo normal (test_normal.txt):
+
+Asegúrate de que todas las líneas se lean correctamente, incluyendo el caso de una línea sin salto final.
+Archivo con línea larga (test_large.txt):
+
+Asegúrate de que las líneas largas no causen errores.
+Archivo con caracteres especiales (test_special_chars.txt):
+
+Verifica el manejo de caracteres no alfanuméricos.
+Buffer Size Pequeño (BUFFER_SIZE=1):
+
+Asegúrate de que funcione correctamente con el tamaño más pequeño posible.
+Buffer Size Grande (BUFFER_SIZE=10000):
+
+Verifica si se maneja eficientemente para buffers grandes

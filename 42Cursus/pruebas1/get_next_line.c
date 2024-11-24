@@ -68,7 +68,7 @@ char	*get_next_line(int fd)
 }
 
 /*
- * this function takes the liine buffer as parameter
+ * this function takes the line buffer as parameter
  * it reads in eat until a \n or \0 is found
  * meaning the end of a line, or the end of the file
  * this function sets the line_buffer a \0 at the end of the line
@@ -104,7 +104,6 @@ static char	*_set_line(char *line_buffer)
  * if a \n is found, it will return the left_c buffer 
  * after appending the read characters to it.
  */
-
 static char	*_fill_line_buffer(int fd, char *left_c, char *buffer)
 {
 	ssize_t	b_read;
