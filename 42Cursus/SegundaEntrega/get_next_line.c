@@ -6,7 +6,7 @@
 /*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:13:13 by dclarkso          #+#    #+#             */
-/*   Updated: 2024/11/25 10:42:00 by dclarkso         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:01:02 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	*get_next_line(int fd)
 	char		*buffer;
 
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
 		free(remaining_chars);
 		free(buffer);
