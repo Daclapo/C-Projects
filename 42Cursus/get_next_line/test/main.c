@@ -1,7 +1,7 @@
 #include "get_next_line.h"
-#include <fcntl.h> // Para open
-#include <stdio.h> // Para printf
-#include <stdlib.h> // Para exit
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 void test_single_read(int fd)
 {
@@ -41,7 +41,6 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    // Abrir el archivo
     fd = open(argv[1], O_RDONLY);
     if (fd < 0)
     {
@@ -49,11 +48,9 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    // Test: Single read
     printf("=== Test: Single Read ===\n");
     test_single_read(fd);
 
-    // Reset fd con close y reopen
     close(fd);
     fd = open(argv[1], O_RDONLY);
     if (fd < 0)
@@ -62,11 +59,9 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    // Test: Loop read
     printf("\n=== Test: Loop Read ===\n");
     test_loop_read(fd);
 
-    // Cerrar el archivo
     if (close(fd) < 0)
     {
         perror("Error closing file");
@@ -75,3 +70,15 @@ int main(int argc, char **argv)
 
     return (0);
 }
+
+/* COMPILATION
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=1 get_next_line.c get_next_line_utils.c main.c -o gnl
+./gnl test_normal.txt
+---
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c main.c -o gnl
+./gnl test_large.txt
+---
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=10000 get_next_line.c get_next_line_utils.c main.c -o gnl
+./gnl test_special_chars.txt
+ */
+

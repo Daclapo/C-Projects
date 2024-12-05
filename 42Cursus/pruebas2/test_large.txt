@@ -1,1 +1,0 @@
-Este archivo contiene una línea muy larga sin saltos de línea. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent suscipit ultrices vehicula. Vivamus euismod, nisi et aliquam tincidunt, erat est pharetra nulla, sit amet congue lectus nunc nec neque. Morbi ornare sapien.
