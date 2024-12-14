@@ -6,7 +6,7 @@
 /*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:54:40 by dclarkso          #+#    #+#             */
-/*   Updated: 2024/11/24 15:16:13 by dclarkso         ###   ########.fr       */
+/*   Updated: 2024/12/04 11:29:16 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@ size_t	ft_strlen(char *s);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 char	*ft_strjoin(char *s1, char *s2);
 void	fill_str(char *res, char *s1, char *s2);
+char	*fill_line_buffer(int fd, char *remaining_chars, char *buffer);
+char	*set_line(char *line_buffer);
+char	*ft_strchr(char *haystack, int needle);
 
 #endif

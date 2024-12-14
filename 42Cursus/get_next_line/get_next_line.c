@@ -6,19 +6,15 @@
 /*   By: dclarkso <dclarkso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:13:13 by dclarkso          #+#    #+#             */
-/*   Updated: 2024/11/24 15:47:48 by dclarkso         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:01:02 by dclarkso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char		*fill_line_buffer(int fd, char *left_c, char *buffer);
-static char		*set_line(char *line);
-static char		*ft_strchr(char *s, int c);
-
-static char	*set_line(char *line_buffer)
+char	*set_line(char *line_buffer)
 {
-	char	*left_c;
+	char	*remaining_chars;
 	ssize_t	i;
 
 	i = 0;
@@ -26,85 +22,85 @@ static char	*set_line(char *line_buffer)
 		i++;
 	if (line_buffer[i] == 0)
 		return (0);
-	left_c = ft_substr(line_buffer, i + 1, ft_strlen(line_buffer) - i);
-	if (*left_c == 0)
+	remaining_chars = ft_substr(line_buffer, i + 1, ft_strlen(line_buffer) - i);
+	if (*remaining_chars == 0)
 	{
-		free(left_c);
-		left_c = NULL;
+		free(remaining_chars);
+		remaining_chars = NULL;
 	}
 	line_buffer[i + 1] = 0;
-	return (left_c);
+	return (remaining_chars);
 }
 
-static char	*fill_line_buffer(int fd, char *left_c, char *buffer)
+char	*fill_line_buffer(int fd, char *remaining_chars, char *buffer)
 {
-	ssize_t	b_read;
+	ssize_t	buff_read;
 	char	*tmp;
 
-	b_read = 1;
-	while (b_read > 0)
+	buff_read = 1;
+	while (buff_read > 0)
 	{
-		b_read = read(fd, buffer, BUFFER_SIZE);
-		if (b_read == -1)
+		buff_read = read(fd, buffer, BUFFER_SIZE);
+		if (buff_read == -1)
 		{
-			free(left_c);
+			free(remaining_chars);
 			return (0);
 		}
-		else if (b_read == 0)
+		else if (buff_read == 0)
 			break ;
-		buffer[b_read] = 0;
-		if (!left_c)
-			left_c = ft_strdup("");
-		tmp = left_c;
-		left_c = ft_strjoin(tmp, buffer);
+		buffer[buff_read] = 0;
+		if (!remaining_chars)
+			remaining_chars = ft_strdup("");
+		tmp = remaining_chars;
+		remaining_chars = ft_strjoin(tmp, buffer);
 		free(tmp);
 		tmp = NULL;
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
-	return (left_c);
+	return (remaining_chars);
 }
 
-static char	*ft_strchr(char *s, int c)
+char	*ft_strchr(char *haystack, int needle)
 {
 	unsigned int	i;
-	char			cc;
+	char			c;
 
-	cc = (char) c;
+	c = (char) needle;
 	i = 0;
-	while (s[i])
+	while (haystack[i])
 	{
-		if (s[i] == cc)
-			return ((char *) &s[i]);
+		if (haystack[i] == c)
+			return ((char *) &haystack[i]);
 		i++;
 	}
-	if (s[i] == cc)
-		return ((char *) &s[i]);
+	if (haystack[i] == c)
+		return ((char *) &haystack[i]);
 	return (NULL);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*left_c;
+	static char	*remaining_chars;
 	char		*line;
 	char		*buffer;
 
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
-		free(left_c);
+		free(remaining_chars);
 		free(buffer);
-		left_c = NULL;
+		remaining_chars = NULL;
 		buffer = NULL;
 		return (0);
 	}
 	if (!buffer)
 		return (NULL);
-	line = fill_line_buffer(fd, left_c, buffer);
+	line = fill_line_buffer(fd, remaining_chars, buffer);
 	free(buffer);
 	buffer = NULL;
 	if (!line)
 		return (NULL);
-	left_c = set_line(line);
+	remaining_chars = set_line(line);
 	return (line);
 }

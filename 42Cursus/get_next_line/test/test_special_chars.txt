@@ -1,0 +1,2 @@
+Línea con caracteres especiales: áéíóú ñ Ñ € @ #
+Línea con tabs:		este texto tiene tabs.
