@@ -111,17 +111,55 @@ El *next (puntero de referencia) del 'tail node', el ultimo nodo de la lista, ap
 ***swap:***
 sa, sb, ss
 
+- SA: Intercambia los dos primeros nodos del stack A
+- SB: Intercambia los dos primeros nodos del stack B
+- SS: Intercambia los dos primeros nodos de ambos stacks, A y B
+
+
 ***rotate:***
 ra, rb, rr
+
+RA: Mueve el primer nodo del stack A a la ultima posicion, y se desplazan el resto de nodos una posicion hacia arriba
+RB: Mueve el primer nodo del stack B a la ultima posicion, y se desplazan el resto de nodos una posicion hacia arriba
+RR: Mueve el primer nodo ambos stacks, A y B, a la ultima posicion, y se desplazan el resto de nodos una posicion hacia arriba
+
 
 ***reverse rotate:***
 rra, rrb, rrr
 
+RRA: Se mueve el ultimo nodo de la stack A a la primera posicion, y se desplazan el resto de nodos una posicion hacia abajo.
+RRB: Se mueve el ultimo nodo de la stack B a la primera posicion, y se desplazan el resto de nodos una posicion hacia abajo.
+RRR: Se mueve el ultimo nodo de ambos stacks, A y B, a la primera posicion, y se desplazan el resto de nodos una posicion hacia abajo.
+
+
 ***push:***
 pa, pb
 
+PA: Se mueve el primer nodo de la stack B (quitandolo) a la primera posicion de la stack A (añadiendolo). 
+PB: Se mueve el primer nodo de la stack A (quitandolo) a la primera posicion de la stack B (añadiendolo). 
 
 
+
+
+
+
+#### Algoritmo de ordenacion; Turk Algorithm, A. Yigit Ogun
+
+- Empuja todos los numeros de la stack A, a la stack B (PB), hasta que solo quedan 3 nodos en la stack A.
+- Cada vez que se empuja un nodo a la stack B, se ordenan (en orden descendiente) los nodos en la stack B. 
+
+
+Resumen: 
+
+Mientras que la stack que nos dan, stack A, tenga más de 3 nodos, se hace un PB (se mueve el primer nodo de stack A, a primera posicion de stack B) dos veces. 
+
+Cuando queden 3 nodos en la stack A, se hace un PB de los 3 nodos que queden, ordenando el stack B en orden descendiente.
+
+Luego se utiliza el algoritmo 'Sort three'.
+
+Tras eso, se emputan todos los nodos de B a A (PA).
+
+Finalmente, se pone el numero mas pequeño, arriba de la stack A.
 
 
 
